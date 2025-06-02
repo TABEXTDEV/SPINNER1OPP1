@@ -1,0 +1,62 @@
+const rowDataArray = [
+  { username: 'cg_5317180', name: 'Alice',roundID: 1,Banker: 10},
+  { username: 'cg_1234567', name: 'Bob',roundID: 1,Player: 10 },
+  { username: 'cg_5317180', name: 'Charlie',roundID: 1,Banker: 10 },
+  { username: 'cg_9876543', name: 'Dave'roundID: 1,Player: 10 },
+    { username: 'cg_5317180', name: 'Alice',roundID: 2,Player: 10},
+  { username: 'cg_1234567', name: 'Bob',roundID: 3,Player: 10 },
+  { username: 'cg_5317180', name: 'Charlie',roundID: 2,Banker: 10 },
+  { username: 'cg_9876543', name: 'Dave'roundID: 3,Player: 10 }
+];
+
+const rowData = [
+  { UserId: 'cg_5317180', name: 'Alice',Gameid: 1,BetPosition:'Banker', Amount: 20},
+  { UserId: 'cg_5317180', name: 'Alice',Gameid: 1,BetPosition:'Player',Amount: 15},
+  { UserId: 'cg_1234567', name: 'Bob',Gameid: 1,BetPosition:'Player',Amount: 10 },
+  { UserId: 'cg_5317180', name: 'Charlie',Gameid: 1,BetPosition:'Player',Amount: 10 },
+  { UserId: 'cg_9876543', name: 'Dave',Gameid: 4,BetPosition:'Banker',Amount: 10 },
+    { UserId: 'cg_5317180', name: 'Alice',Gameid: 2,BetPosition:'Banker',Amount: 10},
+  { UserId: 'cg_1234567', name: 'Bob',Gameid: 3,BetPosition:'Player',Amount: 10 },
+  { UserId: 'cg_5317180', name: 'Charlie',Gameid: 2,BetPosition:'Banker',Amount: 10 },
+  { UserId: 'cg_9876543', name: 'Dave',Gameid: 3,BetPosition:'Player',Amount: 10 }
+];
+const uniqueGameIds = [...new Set(rowData.map(item => item.Gameid))];
+const resultArray = [];
+
+uniqueGameIds.forEach(gameId => {
+  const gameData = { gameId: gameId };
+  const playersInGame = [];
+
+  rowData.forEach(item => {
+    if (item.Gameid === gameId) {
+      const betPosition = item.BetPosition;
+      gameData[betPosition] = (gameData[betPosition] || 0) + item.Amount;
+      playersInGame.push(item.name);
+    }
+  });
+
+  gameData.players = [...new Set(playersInGame)];
+  gameData.difference = (gameData.Banker || 0) - (gameData.Player || 0);
+  gameData.differencePercentage = ((gameData.Banker || 0) - (gameData.Player || 0)) / (gameData.Player || 1) * 100;
+  resultArray.push(gameData);
+});
+
+const filteredArray = [];
+
+resultArray.forEach(gameData => {
+  gameData.players.forEach(playerName => {
+    const existingData = filteredArray.find(item => item.name === playerName);
+    if (!existingData && gameData.differencePercentage <= 45) {
+      filteredArray.push({
+        name: playerName,
+        gameId: gameData.gameId,
+        Banker: gameData.Banker || 0,
+        Player: gameData.Player || 0,
+        difference: gameData.difference || 0,
+        differencePercentage: gameData.differencePercentage || 0
+      });
+    }
+  });
+});
+
+console.log(filteredArray);

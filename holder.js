@@ -1,0 +1,12 @@
+Createdate: data[i][0].formattedValue,
+Gameid: data[i][1].value,
+Partner: data[i][2].value,
+SubPartner: data[i][3].value,
+UserId: data[i][4].value,
+UserName: data[i][5].value,
+TableType: data[i][6].value,
+TableId: data[i][7].value,
+BetPosition: data[i][8].value,
+Currency: data[i][9].value,
+Amount: data[i][10].value,
+Net: data[i][11].value
