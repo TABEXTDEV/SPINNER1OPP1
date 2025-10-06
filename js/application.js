@@ -71,20 +71,20 @@ tableau.extensions.initializeAsync().then(function () {
               Createdate: data[i][0].formattedValue,
               Gameid: data[i][1].value,
               Partner: data[i][2].value,
-              SubPartner: data[i][3].value,
-              OperatorID: data[i][4].value === "%null%" ? " " : data[i][4].value,
+              //SubPartner: data[i][3].value,
+              //OperatorID: data[i][4].value === "%null%" ? " " : data[i][4].value,
               // Casino player id
-              UserId: data[i][5].value,
-              UserName: data[i][6].value === "%null%" ? " " : data[i][6].value,
-              TableType: data[i][7].value,
-              TableId: data[i][8].value,
-              BetPosition: data[i][9].value,
-              Currency: data[i][10].value,
-              Amount: data[i][11].value,
-              Net: data[i][12].formattedValue,
+              UserId: data[i][3].value,
+              UserName: data[i][4].value === "%null%" ? " " : data[i][4].value,
+              TableType: data[i][5].value,
+              TableId: data[i][6].value,
+              BetPosition: data[i][7].value,
+              Currency: data[i][8].value,
+              Amount: data[i][9].value,
+              Net: data[i][10].formattedValue,
               UniqueGroup: "no",
               Uniqueidentifier: data[i][2].value + data[i][3].value,
-              UniquePlayerID: data[i][5].value + "/" + data[i][2].formattedValue
+              UniquePlayerID: data[i][3].value + "/" + data[i][2].formattedValue
           };
     
           // Add the row object to the array
@@ -291,55 +291,55 @@ function GenerateHtmalTable(matchingRows){
             Partner.setAttribute("data-Partner", data[i].Partner);
     
     
-            const SubPartner = row.insertCell(3);
-            SubPartner.innerHTML = data[i].SubPartner;
-            SubPartner.setAttribute("data-UniqueGroup", data[i].UniqueGroup);
-            SubPartner.setAttribute("data-Uniqueidentifier", data[i].Uniqueidentifier);
-            SubPartner.setAttribute("data-SubPartner", data[i].SubPartner);
+           // const SubPartner = row.insertCell(3);
+            //SubPartner.innerHTML = data[i].SubPartner;
+            //SubPartner.setAttribute("data-UniqueGroup", data[i].UniqueGroup);
+            //SubPartner.setAttribute("data-Uniqueidentifier", data[i].Uniqueidentifier);
+            //SubPartner.setAttribute("data-SubPartner", data[i].SubPartner);
     
             
             
             
-            const OperatorID = row.insertCell(4);
-            OperatorID.innerHTML = data[i].OperatorID;
-            OperatorID.setAttribute("data-UniqueGroup", data[i].UniqueGroup);
-            OperatorID.setAttribute("data-Uniqueidentifier", data[i].Uniqueidentifier);
-            OperatorID.setAttribute("data-OperatorID", data[i].OperatorID);
+            //const OperatorID = row.insertCell(4);
+            //OperatorID.innerHTML = data[i].OperatorID;
+            //OperatorID.setAttribute("data-UniqueGroup", data[i].UniqueGroup);
+            //OperatorID.setAttribute("data-Uniqueidentifier", data[i].Uniqueidentifier);
+            //OperatorID.setAttribute("data-OperatorID", data[i].OperatorID);
             
             
 
     
             
-            const UserId = row.insertCell(5);
+            const UserId = row.insertCell(3);
             UserId.innerHTML = data[i].UserId;
             UserId.setAttribute("data-UniqueGroup", data[i].UniqueGroup);
             UserId.setAttribute("data-Uniqueidentifier", data[i].Uniqueidentifier);
             UserId.setAttribute("data-UserId", data[i].UserId);
     
-            const UserName = row.insertCell(6);
+            const UserName = row.insertCell(4);
             UserName.innerHTML = data[i].UserName;
             UserName.setAttribute("data-UniqueGroup", data[i].UniqueGroup);
             UserName.setAttribute("data-Uniqueidentifier", data[i].Uniqueidentifier);
             UserName.setAttribute("data-UserName", data[i].UserName);
     
-            const TableType = row.insertCell(7);
+            const TableType = row.insertCell(5);
             TableType.innerHTML = data[i].TableType;
     
-            const TableId = row.insertCell(8);
+            const TableId = row.insertCell(6);
             TableId.innerHTML = data[i].TableId;
     
-            const BetPosition = row.insertCell(9);
+            const BetPosition = row.insertCell(7);
             BetPosition.innerHTML = data[i].BetPosition;
     
-            const Currency = row.insertCell(10);
+            const Currency = row.insertCell(8);
             Currency.innerHTML = data[i].Currency;
     
     
-            const Amount = row.insertCell(11);
+            const Amount = row.insertCell(9);
             Amount.innerHTML = data[i].Amount;
     
     
-            const Net = row.insertCell(12);
+            const Net = row.insertCell(10);
             Net.innerHTML = data[i].Net;
     
     
