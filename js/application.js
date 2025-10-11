@@ -60,9 +60,9 @@ tableau.extensions.initializeAsync().then(function () {
             }
 
   
-            if(data[i][8].value == "BANKER"){
+            if(data[i][7].value == "BANKER"){
               Banker += data[i][10].value;
-            }else if (data[i][8].value == "PLAYER"){
+            }else if (data[i][7].value == "PLAYER"){
               Player += data[i][10].value;
             }
   
