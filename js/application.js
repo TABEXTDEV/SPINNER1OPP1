@@ -24,8 +24,8 @@ tableau.extensions.initializeAsync().then(function () {
   
   
             
-                    if (!Uniqueidentifier.some(obj => obj.Uniqueidentifier === data[i][2].value + data[i][3].value)) {
-              Uniqueidentifier.push({ Uniqueidentifier: data[i][2].value + data[i][3].value, UniqueGroup: String.fromCharCode(65 + Uniqueidentifier.length) });
+                    if (!Uniqueidentifier.some(obj => obj.Uniqueidentifier === data[i][2].value)) {
+              Uniqueidentifier.push({ Uniqueidentifier: data[i][2].value, UniqueGroup: String.fromCharCode(65 + Uniqueidentifier.length) });
               
               
   /*
@@ -35,13 +35,12 @@ tableau.extensions.initializeAsync().then(function () {
                 text: data[i][2].value + " " +data[i][3].value,
                 "data-UniqueGroup": String.fromCharCode(65 + Uniqueidentifier.length),
                 id: "333"
-  
               });
   */
 
               var button = $("<button/>", {
                // "data-Uniqueidentifier": data[i][2].value + data[i][3].value,
-                "data-Uniqueidentifier": data[i][2].value + data[i][3].value,
+                "data-Uniqueidentifier": data[i][2].value,
                 "data-UniqueGroup": String.fromCharCode(65 + Uniqueidentifier.length),
                 id: "333"
               }).append(
@@ -83,14 +82,14 @@ tableau.extensions.initializeAsync().then(function () {
               Amount: data[i][9].value,
               Net: data[i][10].formattedValue,
               UniqueGroup: "no",
-              Uniqueidentifier: data[i][2].value + data[i][3].value,
+              Uniqueidentifier: data[i][2].value,
               UniquePlayerID: data[i][3].value + "/" + data[i][2].formattedValue
           };
     
           // Add the row object to the array
   
           for(let Y = 0; Y < Uniqueidentifier.length; Y++){
-              if(data[i][2].value + data[i][3].value == Uniqueidentifier[Y].Uniqueidentifier){
+              if(data[i][2].value == Uniqueidentifier[Y].Uniqueidentifier){
                   rowObj.UniqueGroup = Uniqueidentifier[Y].UniqueGroup
               }
           }
