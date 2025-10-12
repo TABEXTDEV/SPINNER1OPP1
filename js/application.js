@@ -50,9 +50,9 @@ tableau.extensions.initializeAsync().then(function () {
 
                 
                
-               '<p class="margin-l"> '+data[i][3].value+'</p>\n' +
+               '<p class="margin-l"> '+data[i][2].value+'</p>\n' +
                 '  </span>\n' +
-              '  <span class="pl-4 pr-5 py-2.5">'+data[i][2].value+'</span>\n' +
+              '  <span class="pl-4 pr-5 py-2.5">''</span>\n' +
                 '</a>'
               );
               
